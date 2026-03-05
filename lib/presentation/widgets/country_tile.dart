@@ -21,10 +21,9 @@ class CountryTile extends StatelessWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final bool isSearchMode = subtitle.isEmpty;
 
-    // Common Flag Widget to avoid code duplication
     Widget buildFlag() {
       return Hero(
-        tag: country.cca2, // Ensure the Detail screen uses this same tag!
+        tag: country.cca2, 
         child: ClipRRect(
           borderRadius: BorderRadius.circular(8),
           child: CachedNetworkImage(
