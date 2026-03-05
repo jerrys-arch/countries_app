@@ -36,14 +36,6 @@ To ensure a seamless user experience, I used shared_preferences to persist the "
 ### 5. Performance Optimization: Debounce Logic
 The search functionality implements Debounce logic using a Timer. This prevents the app from firing an API request for every single keystroke, significantly reducing network traffic and improving UI responsiveness.
 
-### 6. Key Libraries
-
-CachedNetworkImage: For high-performance image loading and disk caching of flags.
-
-Equatable: To optimize rebuilds by comparing object values instead of memory references.
-
-HTTP: For reliable communication with the REST Countries API.
-
 ### 4. Key Libraries
 - **CachedNetworkImage:** For high-performance image loading and disk caching.
 - **Equatable:** To optimize rebuilds by comparing object values instead of memory references.
