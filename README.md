@@ -42,6 +42,13 @@ The search functionality implements Debounce logic using a Timer. This prevents 
 - **HTTP:** For reliable communication with the REST Countries API.
 
 ---
+7. Data Fetching & Caching
+* **Pull-to-Refresh:** Integrated the `RefreshIndicator` widget on the Home screen. This allows users to manually trigger a re-fetch of the country list from the API, ensuring the data is always up-to-date.
+* **Image Caching:** Used `CachedNetworkImage` to store flag images locally after the first load. This reduces data usage and ensures that flags are visible instantly during subsequent scrolls or app launches.
+  ### 8. Responsive UI (Adaptive Layout)
+The app is designed to provide a premium experience across all device sizes using `LayoutBuilder`:
+* **Mobile:** A clean `ListView` optimized for vertical scrolling and one-handed use.
+* **Tablet/Web:** Automatically switches to a `GridView` with a multi-column layout to make efficient use of increased screen real estate.
 
 ## 🛠️ Setup and Installation
 
