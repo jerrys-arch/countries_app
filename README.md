@@ -47,14 +47,16 @@ The `get_it` service locator is used to provide a single instance of the `Countr
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/jerrys-arch/countries_app.git](https://github.com/jerrys-arch/countries_app.git)
+   git clone [https://github.com/jerrys-arch/countries_app.git]
 
 2 Navigate to the project directory:
 
    cd countries_app
+   
 3 Install dependencies:
 
    flutter pub get
+   
 4 Run the application:
 
    flutter run
