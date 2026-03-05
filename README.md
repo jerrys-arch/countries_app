@@ -50,6 +50,12 @@ The app is designed to provide a premium experience across all device sizes usin
 * **Mobile:** A clean `ListView` optimized for vertical scrolling and one-handed use.
 * **Tablet/Web:** Automatically switches to a `GridView` with a multi-column layout to make efficient use of increased screen real estate.
 
+### 9. Dynamic Sorting Logic
+To improve data accessibility, I implemented a custom sorting feature within the `CountryCubit`:
+* **Multi-Criteria Sorting:** Users can toggle between sorting by **Name (Alphabetical)** or **Population (Numerical)**.
+* **State-Driven Updates:** The sorting logic resides in the business logic layer (Cubit), ensuring that the UI re-renders efficiently without redundant API calls.
+* **Performance:** Sorting is performed on the locally cached list in memory, providing near-instant feedback to the user.
+  
 ## 🛠️ Setup and Installation
 
 ### Prerequisites
