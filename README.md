@@ -5,10 +5,10 @@ A sleek, high-performance Flutter application built for the A2SV coding challeng
 ## 🚀 Features
 - **Dynamic Country List:** Browse countries with real-time search and filtering.
 - **Detailed Insights:** Comprehensive data including population, region, capital, and timezones.
-- **Hero Animations:** Smooth visual transitions of flags between screens.
 - **Favorites System:** Save favorite countries locally for quick access.
 - **Theme Support:** Full Dark and Light mode compatibility.
-- **Performance:** Optimized with shimmer loading effects and image caching.
+- **Performance:** Optimized with shimmer loading effects, search debouncing, and image caching.
+- **Responsive Design:** Adaptive UI switching between List and Grid views for Mobile and Tablet/Web.
 
 ---
 
@@ -21,46 +21,46 @@ The project follows a layered architecture to ensure separation of concerns:
 - **Cubits (Logic):** Manages state using the BLoC pattern for predictable UI updates.
 - **Presentation (UI):** Modular widgets and screens for a responsive user experience.
 
+
+
 ### 2. State Management: Cubit
-I chose **Cubit** (from the `flutter_bloc` package) because:
-- It provides a **reactive** approach with less boilerplate than full Blocs.
-- It ensures the UI remains "dumb," strictly reflecting the current state emitted by the logic layer.
-- It simplifies handling complex states like Loading, Loaded, and Error.
+I chose **Cubit** (from the `flutter_bloc` package) because it provides a reactive approach with less boilerplate than full Blocs, ensuring the UI remains "dumb" and strictly reflects the state emitted by the logic layer.
 
 ### 3. Dependency Injection: Get_It
-The `get_it` service locator is used to provide a single instance of the `CountryRepository` and other services, making the app easier to test and reducing manual constructor injection.
+The `get_it` service locator provides a single instance of the `CountryRepository` and other services, making the app easier to test and reducing manual constructor injection.
 
 ### 4. Local Persistence: Shared Preferences
-To ensure a seamless user experience, I used shared_preferences to persist the "Favorites" list. This allows user data to remain available even after the app is closed or restarted.
+I used `shared_preferences` to persist the "Favorites" list. This ensures user data remains available even after the app is closed or restarted.
 
 ### 5. Performance Optimization: Debounce Logic
-The search functionality implements Debounce logic using a Timer. This prevents the app from firing an API request for every single keystroke, significantly reducing network traffic and improving UI responsiveness.
+The search functionality implements **Debounce logic** using a `Timer`. This prevents the app from firing an API request for every single keystroke, significantly reducing network traffic.
 
-### 6. Key Libraries
-- **CachedNetworkImage:** For high-performance image loading and disk caching.
-- **Equatable:** To optimize rebuilds by comparing object values instead of memory references.
-- **HTTP:** For reliable communication with the REST Countries API.
 
----
-  ### 7. Data Fetching & Caching
-* **Pull-to-Refresh:** Integrated the `RefreshIndicator` widget on the Home screen. This allows users to manually trigger a re-fetch of the country list from the API, ensuring the data is always up-to-date.
-* **Image Caching:** Used `CachedNetworkImage` to store flag images locally after the first load. This reduces data usage and ensures that flags are visible instantly during subsequent scrolls or app launches.
-  ### 8. Responsive UI (Adaptive Layout)
-The app is designed to provide a premium experience across all device sizes using `LayoutBuilder`:
-* **Mobile:** A clean `ListView` optimized for vertical scrolling and one-handed use.
-* **Tablet/Web:** Automatically switches to a `GridView` with a multi-column layout to make efficient use of increased screen real estate.
 
-### 9. Dynamic Sorting Logic
-To improve data accessibility, I implemented a custom sorting feature within the `CountryCubit`:
-* **Multi-Criteria Sorting:** Users can toggle between sorting by **Name (Alphabetical)** or **Population (Numerical)**.
-* **State-Driven Updates:** The sorting logic resides in the business logic layer (Cubit), ensuring that the UI re-renders efficiently without redundant API calls.
-* **Performance:** Sorting is performed on the locally cached list in memory, providing near-instant feedback to the user.
+### 6. Data Fetching & Offline Support
+- **Pull-to-Refresh:** Integrated the `RefreshIndicator` on the Home screen for manual API re-fetching.
+- **Offline Viewing:** Enabled offline access for previously visited content:
+    - **Flag Caching:** Using `CachedNetworkImage`, all country flags are stored on the local disk once viewed.
+    - **Persistent Favorites:** Favorited countries are always accessible via Shared Preferences.
+    - **State Persistence:** Using the Repository pattern, fetched data remains available for viewing during the session even if connection is lost.
+
+### 7. Responsive UI (Adaptive Layout)
+The app uses `LayoutBuilder` to provide a premium experience across all device sizes:
+- **Mobile:** A clean `ListView` optimized for vertical scrolling.
+- **Tablet/Web:** Switches to a `GridView` with a multi-column layout for large-screen efficiency.
+
+
+
+### 8. Dynamic Sorting Logic
+Implemented custom sorting within the `CountryCubit`:
+- **Multi-Criteria:** Toggle between sorting by **Name (Alphabetical)** or **Population (Numerical)**.
+- **Performance:** Sorting is performed on the locally cached list in memory for instant feedback.
   
 ## 🛠️ Setup and Installation
 
 ### Prerequisites
-- Flutter SDK: `^3.0.0`
-- Dart SDK: `^3.0.0`
+- Flutter SDK: `^3.35.6`
+- Dart SDK: `^3.9.2`
 
 ### Installation Steps
 
