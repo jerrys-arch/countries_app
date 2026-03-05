@@ -30,6 +30,20 @@ I chose **Cubit** (from the `flutter_bloc` package) because:
 ### 3. Dependency Injection: Get_It
 The `get_it` service locator is used to provide a single instance of the `CountryRepository` and other services, making the app easier to test and reducing manual constructor injection.
 
+### 4. Local Persistence: Shared Preferences
+To ensure a seamless user experience, I used shared_preferences to persist the "Favorites" list. This allows user data to remain available even after the app is closed or restarted.
+
+### 5. Performance Optimization: Debounce Logic
+The search functionality implements Debounce logic using a Timer. This prevents the app from firing an API request for every single keystroke, significantly reducing network traffic and improving UI responsiveness.
+
+### 6. Key Libraries
+
+CachedNetworkImage: For high-performance image loading and disk caching of flags.
+
+Equatable: To optimize rebuilds by comparing object values instead of memory references.
+
+HTTP: For reliable communication with the REST Countries API.
+
 ### 4. Key Libraries
 - **CachedNetworkImage:** For high-performance image loading and disk caching.
 - **Equatable:** To optimize rebuilds by comparing object values instead of memory references.
