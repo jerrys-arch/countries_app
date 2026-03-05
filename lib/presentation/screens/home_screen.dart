@@ -63,16 +63,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: InputDecoration(
                     hintText: "Search for a country",
                     prefixIcon: const Icon(Icons.search, color: Colors.grey),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.cancel, color: Colors.grey, size: 20),
-                      onPressed: () {
-                        _searchController.clear();
-                        setState(() {}); 
-                        context.read<CountryCubit>().searchCountries("");
-                      },
-                    ),
+                    // --- MODIFIED SECTION START ---
+                    suffixIcon: _searchController.text.isNotEmpty 
+                      ? IconButton(
+                          icon: const Icon(Icons.cancel, color: Colors.grey, size: 20),
+                          onPressed: () {
+                            _searchController.clear();
+                            setState(() {}); 
+                            context.read<CountryCubit>().searchCountries("");
+                          },
+                        )
+                      : null, 
                     filled: true,
-                    fillColor: isDarkMode ? Colors.grey[900] : const Color(0xFFF5F5F5),
+                    fillColor: isDarkMode ? Colors.grey[900] : const Color(0xFFE5E7EB),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide.none,
