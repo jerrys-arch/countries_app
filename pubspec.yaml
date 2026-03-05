@@ -1,0 +1,58 @@
+name: countries_app
+description: "A Flutter app to browse and learn about countries."
+publish_to: 'none' # Prevent publishing to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # iOS style icons (Cupertino)
+  cupertino_icons: ^1.0.8
+
+  # State management (Cubit/BLoC)
+  flutter_bloc: ^9.1.0
+
+  # For immutable models and easy comparison in states
+  equatable: ^2.0.5
+
+  # HTTP client for API requests
+  dio: ^5.3.1
+
+  # Image caching for flags
+  cached_network_image: ^3.2.3
+
+  # Local storage for favorites
+  shared_preferences: ^2.1.0
+
+  shimmer: ^3.0.0
+
+  get_it: ^8.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Recommended Flutter lints for clean code
+  flutter_lints: ^5.0.0
+
+  # Optional: for testing Cubit states
+  bloc_test: ^10.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Uncomment and add assets if needed
+  # assets:
+  #   - assets/images/
+
+  # Uncomment and add fonts if needed
+  # fonts:
+  #   - family: Roboto
+  #     fonts:
+  #       - asset: fonts/Roboto-Regular.ttf
+  #       - asset: fonts/Roboto-Bold.ttf
